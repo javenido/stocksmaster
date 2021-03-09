@@ -1,0 +1,226 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Century Gothic";
+    margin: 0;
+}
+
+#canvas {
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #fff;
+}
+
+li {
+    list-style: none;
+}
+
+.top-companies, .api {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 25px 0;
+}
+
+.legend {
+    margin: 0 50px;
+}
+
+.legend-mark {
+    height: 10px;
+    width: 100px;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.top1 {
+    background-color: red;
+}
+
+.top2 {
+    background-color: blue;
+}
+
+.top3 {
+    background-color: orange;
+}
+
+.top4 {
+    background-color: green;
+}
+
+.top5 {
+    background-color: purple;
+}
+
+th {
+    padding: 20px 5px;
+}
+
+td {
+    padding: 10px 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+
+thead {
+    background-color: #141416;
+    color: #fff;
+}
+
+table {
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px #CCC;
+    width: 70%;
+    border-spacing: 0;
+}
+
+    table th:first-child {
+        border-radius: 10px 0 0 0;
+    }
+
+    table th:last-child {
+        border-radius: 0 10px 0 0;
+    }
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #BBB;
+}
+
+.api div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0 20px 25px 20px;
+}
+
+input:not([type="submit"]), select {
+    margin: 5px;
+    text-align: center;
+    border-radius: 4px;
+    height: 25px;
+    border: none;
+    box-shadow: 2px 2px 8px #EEE;
+}
+
+input[type=submit] {
+    font-family: "Century Gothic";
+    background-color: #01a5f1;
+    color: #fff;
+    border-style: none;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+footer {
+    font-family: "Century Gothic";
+    padding-top: 50px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #141416;
+    color: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 15px black;
+}
+
+    footer text {
+        text-align: center;
+    }
+
+.companies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 0 50px 0;
+    background-color: #f0f0f0;
+}
+
+.nav {
+    width: 100%;
+    background-color: #141416;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 15px black;
+}
+
+    .nav a {
+        color: #fff;
+        text-transform: uppercase;
+        padding: 10px 25px;
+        text-decoration: none;
+    }
+
+        .nav a:hover {
+            color: #01a5f1;
+        }
+
+.list-container {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+table a {
+    color: black;
+    text-decoration: none;
+}
+
+    table a:hover {
+        color: #01a5f1;
+    }
+
+.details {
+    width: 50%;
+    margin-bottom: 100px;
+}
+
+.message-container {
+    background-color: #037896;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.message {
+    color: #fff;
+    padding: 0 15%;
+    width: 100%;
+}
+
+.pagination {
+    margin-top: 50px;
+}
+
+    .pagination a {
+        padding: 10px;
+        color: #fff;
+        background-color: #141416;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination .currentPageLink {
+        background-color: #01a5f1;
+    }

@@ -1,0 +1,53 @@
+﻿@{
+    string controller = ViewContext.RouteData.Values["Controller"].ToString();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/images/logo.png" />
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+    <script src="~/js/scripts.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav">
+        <a asp-controller="Home" asp-action="Index" title="Home">
+            <img src="~/images/logo-text.png" height="100" />
+        </a>
+        <div style="margin-right: auto"></div>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        @if (controller == "Home")
+        {
+            <a href="#top5">Top 5 Companies</a>
+            <a href="#all">All Companies</a>
+            <a href="#api">API Capabilities</a>
+        }
+        <a asp-controller="StocksData" asp-action="List">Stocks Data</a>
+    </div>
+
+    <!-- Message -->
+    @if(TempData["message"]!=null)
+    {
+        <div class="message-container"><span class="message">@TempData["message"]</span></div>
+    }
+
+    <!-- Rendered -->
+    <div style="width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;">
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img src="~/images/logo.png" height="100" />
+        <text>Stock Master | COMP 306 SEC 002 F20</text>
+        <text>Co-created by John Avenido (301124856) and Marvin de Lara (301091991).</text>
+    </footer>
+</body>
+</html>

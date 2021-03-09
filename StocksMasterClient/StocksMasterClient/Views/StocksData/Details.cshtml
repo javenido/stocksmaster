@@ -1,0 +1,35 @@
+﻿@model StocksDatum
+@{
+    ViewBag.Title = "StocksDatum Details";
+}
+
+@if (Model == null)
+{
+    <div>
+        <h1>404 NOT FOUND</h1>
+    </div>
+}
+else
+{
+    <h1>Stocks Datum Details</h1>
+
+    <table class="details">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company ID</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td align="center">@Model.StocksDataId</td>
+                <td align="center">@Model.CompanyId</td>
+                <td align="center">@($"{Model.StocksPrice:c}")</td>
+                <td align="center">@Model.Date</td>
+            </tr>
+        </tbody>
+    </table>
+}

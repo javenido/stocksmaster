@@ -1,0 +1,117 @@
+﻿@model IndexViewModel
+@{
+    int i = 1, rank = 1;
+    ViewBag.Title = "Stocks Master";
+}
+
+<!-- Top 5 -->
+<a name="top5"><h1>Top 5 Companies</h1></a>
+
+<div class="top-companies">
+    <canvas id="canvas"></canvas>
+
+    <div class="legend">
+        <h3>Legend</h3>
+        <ul>
+            @foreach (var company in Model.Top5Companies)
+            {
+                <li>
+                    <input id="set@(i)" type="hidden" value="@company.StocksDataToString()" />
+                    <span class="legend-mark top@(i++)"></span>@company
+                </li>
+            }
+        </ul>
+        <script>
+            drawCanvas();
+            drawLabels();
+        </script>
+    </div>
+
+</div>
+
+<!-- All Companies -->
+<div class="companies">
+    <a name="all"><h1>All Companies</h1></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Predicted</th>
+                <th>Percent Increase</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var company in Model.AllCompanies)
+            {
+                <tr>
+                    <td align="center">@(rank++)</td>
+                    <td><a asp-controller="StocksData" asp-action="List" asp-route-companyId="@company.Company.CompanyId">@company.Company.CompanyName</a></td>
+                    <td align="center">@company.Company.CompanySymbol</td>
+                    <td align="center">@($"{company.Predicted:c}")</td>
+                    <td align="center">@company.PercentIncrease%</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a name="api"><h1>API Capabilities</h1></a>
+
+<!-- API Functions -->
+<div class="api">
+    <!-- GET BY ID -->
+    <div>
+        <h2>Get by ID</h2>
+        <form asp-controller="StocksData" asp-action="Details">
+            <input name="stocksDatumId" type="text" placeholder="StocksDatum ID" required />
+            <input type="submit" value="Get" />
+        </form>
+    </div>
+
+    <!-- POST -->
+    <div>
+        <h2>Post</h2>
+        <form asp-controller="StocksData" asp-action="Post" method="post">
+            <select name="companyId" required>
+                <option value="">Select a company</option>
+                @foreach (var company in Model.AllCompanies.OrderBy(c => c.Company.CompanyName))
+                {
+                    <option value="@company.Company.CompanyId">@company.Company.CompanyName</option>
+                }
+            </select>
+            <input name="price" type="text" placeholder="Value" required />
+            <input name="date" type="date" required />
+            <input type="submit" value="Post" />
+        </form>
+    </div>
+
+    <!-- PUT -->
+    <div>
+        <h2>Put</h2>
+        <form asp-controller="StocksData" asp-action="Put">
+            <input name="stocksDatumId" type="text" placeholder="StocksDatum ID" required />
+            <select name="companyId" required>
+                <option value="">Select a company</option>
+                @foreach (var company in Model.AllCompanies.OrderBy(c => c.Company.CompanyName))
+                {
+                    <option value="@company.Company.CompanyId">@company.Company.CompanyName</option>
+                }
+            </select>
+            <input name="price" type="text" placeholder="Value" required />
+            <input name="date" type="date" required />
+            <input type="submit" value="Put" />
+        </form>
+    </div>
+
+    <!-- DELETE -->
+    <div>
+        <h2>Delete</h2>
+        <form asp-controller="StocksData" asp-action="Delete">
+            <input name="stocksDatumId" type="text" placeholder="StocksDatum ID" required />
+            <input type="submit" value="Delete" />
+        </form>
+    </div>
+</div>

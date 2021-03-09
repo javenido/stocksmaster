@@ -1,0 +1,41 @@
+--Delete the StocksMasterDB (Stocks Master Database) database if it exists. 
+IF EXISTS(SELECT * from sys.databases WHERE name='StocksMasterDB') 
+BEGIN 
+    DROP DATABASE StocksMasterDB; 
+END 
+
+CREATE DATABASE StocksMasterDB;
+GO
+
+USE StocksMasterDB
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.Company (
+    CompanyId      INT            IDENTITY (1, 1) PRIMARY KEY,
+    CompanyName    NVARCHAR (50)  NOT NULL,
+    CompanySymbol  NVARCHAR (30)  NULL
+);
+GO
+
+insert into Company(CompanyName,CompanySymbol) values('Amtek Inc', 'AME');
+insert into Company(CompanyName,CompanySymbol) values('Boeing Company', 'BA');
+insert into Company(CompanyName,CompanySymbol) values('Citigroup Inc', 'CI');
+insert into Company(CompanyName,CompanySymbol) values('Delta Airlines Inc', 'DAL');
+insert into Company(CompanyName,CompanySymbol) values('Ecolab Inc', 'ECL');
+insert into Company(CompanyName,CompanySymbol) values('First American Corp', 'FAF');
+insert into Company(CompanyName,CompanySymbol) values('Genesco Inc', 'GCO');
+
+CREATE TABLE dbo.StocksData (
+    StocksDataId    INT            IDENTITY (1, 1) PRIMARY KEY,
+    StocksPrice     DECIMAL(10,2)  NOT NULL,
+    Date            NVARCHAR (50)  NULL,
+    CompanyId       INT            NOT NULL
+    CONSTRAINT FK_StocksData_Company_CompanyId FOREIGN KEY ([CompanyId]) REFERENCES Company (CompanyId)
+    ); 
+Go
